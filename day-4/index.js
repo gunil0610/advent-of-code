@@ -1146,6 +1146,50 @@ for (const data of newData) {
   objArr.push(newObj);
 }
 
+const checkHeight = (hgt) => {
+  let passedHeight = false;
+
+  if (hgt && (hgt.includes('in') || hgt.includes('cm'))) {
+    if (hgt.includes('in')) {
+      let height = parseInt(hgt.split('in')[0]);
+      if (height >= 59 && height <= 76) {
+        passedHeight = true;
+      }
+    } else if (hgt.includes('cm')) {
+      let height = parseInt(hgt.split('cm')[0]);
+      if (height >= 150 && height <= 193) {
+        passedHeight = true;
+      }
+    }
+  }
+  return passedHeight;
+};
+
+const checkHairColor = (hcl) => {
+  if (hcl && /^#[0-9A-F]{6}$/i.test(hcl)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const checkEyeColor = (ecl) => {
+  const validEyeColor = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'];
+  if (ecl && validEyeColor.includes(ecl)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const checkPassportID = (pid) => {
+  if (pid && /^[0-9]{9}$/.test(pid)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const result = objArr.reduce((acc, obj) => {
   // check byr
   if (obj.byr && parseInt(obj.byr) >= 1920 && parseInt(obj.byr) <= 2002) {
@@ -1154,37 +1198,14 @@ const result = objArr.reduce((acc, obj) => {
       // check eyr
       if (obj.eyr && parseInt(obj.eyr) >= 2020 && parseInt(obj.eyr) <= 2030) {
         // check hgt
-        if (obj.hgt && (obj.hgt.includes('in') || obj.hgt.includes('cm'))) {
-          let passedHeight = false;
-          if (obj.hgt.includes('in')) {
-            let height = parseInt(obj.hgt.split('in')[0]);
-            if (height >= 59 && height <= 76) {
-              passedHeight = true;
-            }
-          } else if (obj.hgt.includes('cm')) {
-            let height = parseInt(obj.hgt.split('cm')[0]);
-            if (height >= 150 && height <= 193) {
-              passedHeight = true;
-            }
-          }
-          if (passedHeight) {
-            // check hcl
-            if (obj.hcl && /^#[0-9A-F]{6}$/i.test(obj.hcl)) {
-              const validEyeColor = [
-                'amb',
-                'blu',
-                'brn',
-                'gry',
-                'grn',
-                'hzl',
-                'oth',
-              ];
-              // check ecl
-              if (obj.ecl && validEyeColor.includes(obj.ecl)) {
-                // check pid
-                if (obj.pid && /^[0-9]{9}$/.test(obj.pid)) {
-                  acc += 1;
-                }
+        if (checkHeight(obj.hgt)) {
+          // check hcl
+          if (checkHairColor(obj.hcl)) {
+            // check ecl
+            if (checkEyeColor(obj.ecl)) {
+              // check pid
+              if (checkPassportID(obj.pid)) {
+                acc += 1;
               }
             }
           }
