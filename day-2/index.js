@@ -1,4 +1,4 @@
-const inputArr = [
+const day2Input = [
   '2-8 t: pncmjxlvckfbtrjh',
   '8-9 l: lzllllldsl',
   '3-11 c: ccchcccccclxnkcmc',
@@ -1001,10 +1001,10 @@ const inputArr = [
   '10-11 x: xxxxxxxxxcv',
 ];
 
-const inputArrModified = [];
+const day2InputModified = [];
 
 // // part 1
-// inputArr.forEach((element) => {
+// day2Input.forEach((element) => {
 //   const things = element.split(' ');
 //   const minMax = things[0].split('-');
 //   const key = things[1].split(':');
@@ -1015,7 +1015,7 @@ const inputArrModified = [];
 //     key: key[0],
 //     password,
 //   };
-//   inputArrModified.push(newObj);
+//   day2InputModified.push(newObj);
 // });
 
 // const check = (acc, el) => {
@@ -1033,10 +1033,10 @@ const inputArrModified = [];
 //   }
 // };
 
-// console.log(inputArrModified.reduce(check, 0));
+// console.log(day2InputModified.reduce(check, 0));
 
 // part 2
-inputArr.forEach((element) => {
+day2Input.forEach((element) => {
   const things = element.split(' ');
   const position = things[0].split('-');
   const key = things[1].split(':');
@@ -1047,7 +1047,7 @@ inputArr.forEach((element) => {
     key: key[0],
     password,
   };
-  inputArrModified.push(newObj);
+  day2InputModified.push(newObj);
 });
 
 const check2 = (acc, el) => {
@@ -1064,4 +1064,4 @@ const check2 = (acc, el) => {
   }
 };
 
-console.log(inputArrModified.reduce(check2, 0));
+console.log(day2InputModified.reduce(check2, 0));

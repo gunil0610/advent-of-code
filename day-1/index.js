@@ -1,4 +1,4 @@
-input = [
+const day1Input = [
   1765,
   1742,
   1756,
@@ -204,7 +204,7 @@ input = [
 const numObj = {};
 
 // part 1
-// for (num of input) {
+// for (num of day1Input) {
 //   let pairNum = 2020 - num;
 //   if (pairNum in numObj) {
 //     console.log(num * pairNum);
@@ -214,10 +214,10 @@ const numObj = {};
 // }
 
 // part 2
-for (num of input) {
+for (num of day1Input) {
   let leftNum = 2020 - num;
   numObj[num] = {};
-  for (num2 of input) {
+  for (num2 of day1Input) {
     let pairNum = leftNum - num2;
     if (pairNum in numObj) {
       // console.log(`${num}, ${num2}, ${pairNum}`);
