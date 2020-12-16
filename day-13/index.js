@@ -1,6 +1,4 @@
-const { timeStamp, time } = require('console');
 const fs = require('fs');
-const { parse } = require('path');
 
 const input = fs
   .readFileSync('input.txt', { encoding: 'utf-8' })
