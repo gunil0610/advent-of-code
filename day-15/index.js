@@ -40,7 +40,6 @@ const solve = (input, limit) => {
     target = indexes.has(target) ? index - indexes.get(target) : 0;
     indexes.set(bucket, index);
     bucket = target;
-    console.log(indexes);
   }
   return target;
 };
